@@ -6,4 +6,5 @@ def uppercase(str):
             word += chr(ord(i) - 32)
         else:
             word += i
-    return word
+    print(word)
+    
