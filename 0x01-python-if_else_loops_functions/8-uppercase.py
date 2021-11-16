@@ -7,6 +7,7 @@ def uppercase(str):
         else:
             word += i
     print("{:s}".format(word))
+    print("")
 
 
     
