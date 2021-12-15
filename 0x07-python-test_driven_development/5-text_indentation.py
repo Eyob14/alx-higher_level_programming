@@ -1,25 +1,35 @@
 #!/usr/bin/python3
-"""Module for text_indentation method."""
+""" text_indentation returns "text" in the specified format:
+2 newlines after each ['.', '?', ':']
+"""
 
 
 def text_indentation(text):
-    """Method for adding 2 new lines after '.?:' characters.
-
-    Args:
-        text: The str text.
-
-    Raises:
-        TypeError: If text is not a STR.
+    """ prints "text" with 2 newlines after each of these char: ['.', '?', ':']
+    checks if "text" is a str
+    first loop removes spaces after each required chars
+    second loop adds 2 newlines after each required chars
     """
-    if not isinstance(text, str):
+    if type(text) != str:
         raise TypeError("text must be a string")
+    toCatAfter = ['.', '?', ':']
 
-    for delim in ".?:":
-        text = (delim + "\n\n").join(
-            [line.strip(" ") for line in text.split(delim)])
+    # Removes the space after special chars
+    idx = 0
+    for items in text:
+        if items in toCatAfter:
+            if text[idx + 1] == " ":
+                text = text[:idx + 1] + text[idx + 2:]
+        else:
+            idx += 1
 
-    print(text, end="")
+    # Cats '\n\n' after the special char with removed space
+    idx = 0
+    for items in text:
+        if items in toCatAfter:
+            text = text[:idx + 1] + '\n\n' + text[idx + 1:]
+            idx += 3
+        else:
+            idx += 1
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("tests/5-text_indentation.txt")
+    print(text, end='')

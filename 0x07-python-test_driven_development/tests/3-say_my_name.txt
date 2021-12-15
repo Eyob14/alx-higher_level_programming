@@ -1,58 +1,43 @@
-This is a doctest for 3-say_my_name module.
-+__________________________________________________________________________________+
+Using ``say_my_name``
+-----------------------
 
-Using ``3-say_my_name``.
-It is supposed to print a first and last name.
-____________________________________________________________________________________
+Checks if first_name or last_name is a str
+Prints "My name is <first name> <last name>"
 
-Import Module:
-	>>> say_my_name = __import__('3-say_my_name').say_my_name
+First import ``say_my_name``
 
-____________________________________________________________________________________
-Test basic:
-	>>> say_my_name("hello", "there")
-	My name is hello there
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
 
-Test firstname:
-	>>> say_my_name("hello")
-	My name is hello 
+Now use it:
 
-Test lastname empty:
-	>>> say_my_name("hello", "")
-	My name is hello 
+Basic usage:
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
 
-Test both names empty:
-	>>> say_my_name("", "")
-	My name is  
+First name only input:
+    >>> say_my_name("Bob")
+    My name is Bob 
 
-Test just spaces:
-	>>> say_my_name("   ", "   ")
-	My name is        
-
-Test empty firstname:
-	>>> say_my_name("", "hello")
-	My name is  hello
-
-Test not str arg1:
-    >>> say_my_name(33, "hello")
+Non string input:
+    >>> say_my_name(3, 3)
     Traceback (most recent call last):
     ...
     TypeError: first_name must be a string
 
-Test not str arg2:
-    >>> say_my_name("hello", 98)
-    Traceback (most recent call last):
-    ...
-    TypeError: last_name must be a string
-
-Test not str arg1 arg2:
-    >>> say_my_name(91, 98)
+Non string input without last_name:
+    >>> say_my_name(3)
     Traceback (most recent call last):
     ...
     TypeError: first_name must be a string
 
-Missing 2 args:
+No inputs:
     >>> say_my_name()
     Traceback (most recent call last):
     ...
     TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Last name wrong input:
+    >>> say_my_name("Bob", 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
