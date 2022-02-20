@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-for a in range(0, 8):
-    for b in range(a + 1, 10):
-        print("{:d}{:d}".format(a, b), end=", ")
-print("{:d}{:d}".format(a + 1, b))
+for i in range(8):
+    for j in range(i, 10):
+        if i != j:
+            print("{}{}, ".format(i,j), end="")
+print("{}{}".format(i+1, j))
