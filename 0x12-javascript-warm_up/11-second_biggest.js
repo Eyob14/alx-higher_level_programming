@@ -5,5 +5,5 @@ if (number.length === 2 || number.length === 3) {
 } else {
   const numbers = number.slice(2);
   numbers.sort();
-  console.log(numbers[numbers.length - 2]);
+  console.log(parseInt(numbers[numbers.length - 2]));
 }
