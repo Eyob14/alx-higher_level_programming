@@ -10,8 +10,7 @@ request(url, (err, res) => {
         console.error(err);
       }
     });
-  }
-  else {
+  } else {
     console.error(err);
   }
 });
