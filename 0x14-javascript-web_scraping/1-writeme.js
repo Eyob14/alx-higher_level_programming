@@ -8,4 +8,6 @@ if (file && word) {
       console.error(err);
     }
   });
+} else {
+  throw new Error('Enter a content to write');
 }
