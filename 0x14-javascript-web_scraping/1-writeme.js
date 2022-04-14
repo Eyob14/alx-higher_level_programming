@@ -1,0 +1,11 @@
+#!/usr/bin/node
+const fs = require('fs');
+const file = process.argv[2];
+const word = process.argv[3];
+if (file && word) {
+  fs.writeFile(file, word, err => {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
