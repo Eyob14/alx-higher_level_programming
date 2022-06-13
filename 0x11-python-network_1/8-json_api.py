@@ -1,23 +1,27 @@
 #!/usr/bin/python3
 """
-takes in a letter and sends a POST request to http://0.0.0.0:5000/search_user
-with the letter as a parameter
+    Script that takes in a letter and sends a POST request to
+    https://0.0.0.0:5000/search_user with the letter as a parameter
+    the letter is sent in variable q, otherwise q is empty
+    displays [<id>] <name> if repsonse is properly JSON formatted
 """
-if __name__ == '__main__':
-    import requests
-    from sys import argv
-    if len(argv) == 2:
-        q = argv[1]
+import requests
+import sys
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        payload = {'q': sys.argv[1]}
     else:
-        q = ""
-    r = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
+        payload = {'q': ""}
+
+    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+
     try:
-        r_dict = r.json()
-        id = r_dict.get('id')
-        name = r_dict.get('name')
-        if len(r_dict) == 0 or not id or not name:
+        r_json = r.json()
+        if r_json == {}:
             print("No result")
         else:
-            print("[{}] {}".format(r_dict.get('id'), r_dict.get('name')))
-    except:
+            print("[{}] {}".format(r_json['id'], r_json['name']))
+    except ValueError:
         print("Not a valid JSON")
